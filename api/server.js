@@ -1,21 +1,25 @@
 const express = require('express');
 const server = express();
+const { logger } = require('./actions/actions-middleware')
+
+// Importing routers
+const projectsRouter = require('./projects/projects-router');
+const actionsRouter = require('./actions/actions-router');
 
 // Configure your server here
 
 server.use(express.json());
 
-// Middleware #1
+// Routing
 
-server.use('/api/users', (req, res) => {
+server.use('/api/projects', projectsRouter);
+server.use('/api/actions', actionsRouter)
 
-})
+// Middleware 
 
-// Middleware #2
+server.use(logger)
 
-server.use('/api/users', (req, res) => {
-
-})
+// testing root response
 
 server.get('/', (req, res) => {
     res.send(`<h2>Testing root access works.</h2>`);

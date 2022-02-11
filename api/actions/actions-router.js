@@ -7,11 +7,14 @@ const {
 
 
 
-} = require('./actions-middlware')
+} = require('./actions-middleware')
 
 // Import Model
 
 const Actions = require('./actions-model');
+
+// **** Writing Project Endpoints ****
+
 
 // `[GET] /api/actions` - Returns an array of actions (or an empty array) as the body of the response.
 
@@ -46,3 +49,5 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     
 })
+
+module.exports = router; 
