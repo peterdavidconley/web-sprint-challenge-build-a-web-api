@@ -18,9 +18,9 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 
 ### Task 1: Project Set Up
 
-- [ ] Run `npm install` to install your dependencies.
-- [ ] Run tests locally executing `npm test`.
-- [ ] Reset the database to its original state executing `npm run resetdb`.
+- [x] Run `npm install` to install your dependencies.
+- [x] Run tests locally executing `npm test`.
+- [x] Reset the database to its original state executing `npm run resetdb`.
 
 ### Task 2: Project Requirements (MVP)
 
@@ -31,9 +31,9 @@ Your finished project must include all of the following requirements:
 A _"test"_ script already exists you can use to run tests against your code.
 A _"resetdb"_ script exists that allows you to reset the database to its original state.
 
-- [ ] Write an _npm script_ named _"start"_ that uses `node` to run the API server.
-- [ ] Write an _npm script_ named _"server"_ that uses `nodemon` to run the API server.
-- [ ] Install _nodemon_ as a development dependency that would not be used in production.
+- [x] Write an _npm script_ named _"start"_ that uses `node` to run the API server.
+- [x] Write an _npm script_ named _"server"_ that uses `nodemon` to run the API server.
+- [x] Install _nodemon_ as a development dependency that would not be used in production.
 
 #### Environment Variables
 
@@ -137,10 +137,10 @@ We have provided test data for all the resources.
 
 ## Submission format
 
-- [ ] Submit via Codegrade by pushing commits to your `main` branch.
+- [x] Submit via Codegrade by pushing commits to your `main` branch.
 - [ ] Check Codegrade before the deadline to compare its results against your local tests.
 - [ ] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
-- [ ] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
+- [x] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
 
 ## Interview Questions
 
