@@ -151,6 +151,17 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 Node.js and Express allows you to use JavaScript without a browser. They also give you the functionality to create a working server to create API's without other languages like Python. 
 
 1. Understand and explain the use of Middleware.
+
+Middleware functions can execute code, make changes to the request and the response objects, end the request-response cycle, and call the next middleware function in the stack.
+
 1. The basic principles of the REST architectural style.
+
+REST provides a uniform interface for components, it supplies a separation of concern for the client & server, is stateless, can be cacheable or noncacheable, and allows for layer hierarchy.
+
 1. Understand and explain the use of Express Routers.
+
+Routers allow to simplify the complexity of multiple endpoints by consolidating server requests by starting URL structures. 
+
 1. Describe tooling used to manually test the correctness of an API.
+
+Manual tools can consist of HTTPie requests or using clients to test the CRUD methods of specific endpoints. Like making sure the correct array is being returned at its specified endpoint. 
