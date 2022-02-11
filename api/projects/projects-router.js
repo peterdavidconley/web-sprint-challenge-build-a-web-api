@@ -142,23 +142,14 @@ router.delete('/:id', (req, res) => {
 
 // `[GET] /api/projects/:id/actions` - Returns an array of actions (could be empty) belonging to a project with the given `id`. - If there is no project with the given `id` it responds with a status code 404.
 
-router.get('/:id/actions', async (req, res) => {
+router.get('/:id/actions', async (req, res, next) => {
 
     try {
-        const project = await Projects.get(req.body.params)
-        if (!actions) {
-            res.status(404).json({
-                message: 'The project with the specified ID does not exist'
-            })
-        } else {
-            const actions = await Projects.getProjectActions(req.body.params)
-            res.status(201).json(actions)
-        }
+        const actions = await Projects.getProjectActions(req.params.id)
+        res.json(actions)
 
-    } catch {
-        res.status(500).json({
-            message: 'There was an error with this req'
-        })
+    } catch (err) {
+        next(err)
     }
 
 })
