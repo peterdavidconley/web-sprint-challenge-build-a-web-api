@@ -48,16 +48,19 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 
-    Actions.insert(req.body)
-    .then(newAction => {
+    
+    
         if (!req.body.project_id || !req.body.description || !req.body.notes) {
             res.status(400).json({
                 message: 'Missing required fields'
             })
         } else {
+            Actions.insert(req.body)
+            .then(newAction => {
             res.json(newAction)
+            })
         }
-    })
+    
     
 })
 

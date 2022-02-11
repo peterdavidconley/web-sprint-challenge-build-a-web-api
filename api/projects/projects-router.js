@@ -56,32 +56,11 @@ router.post('/', (req, res) => {
         })
     } else {
         Projects.insert(req.body)
-        .then( ({ id }) => {
-            return Posts.findById(id) 
+        .then(newPost => {
+            res.json(newPost)
         })
-        .then(post => {
-                res.status(201).json(post)
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: 'An error has occurred with this request.'
-            })
-        })
+        
     }
-
-    // .then(newProject => {
-    //     if (!name || !description) {
-    //         res.status(400).json({
-    //             message: 'Missing required fields'
-    //         })
-    //     } else {
-    //         res.json(newProject)
-    //     }
-    // })
-    // .catch(err => {
-    //     res.status(500).json({
-    //         message: 'An error has occurred with this request.'
-    //     })
     
 })
 
