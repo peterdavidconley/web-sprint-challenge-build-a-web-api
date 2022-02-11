@@ -89,7 +89,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
 
-    const { name, description } = req.body
+    const { name, description, } = req.body
     if (!name || !description) {
         res.status(400).json({
             message: 'Missing required fields'
@@ -161,17 +161,6 @@ router.get('/:id/actions', async (req, res) => {
         })
     }
 
-
-    // Projects.getProjectActions(req.body.params)
-    // .then(actions => {
-    //     if(!actions){
-    //         res.status(404).json({
-    //             message: 'Could not locate project with that ID'
-    //         })
-    //     } else {
-    //         res.json(actions)
-    //     }
-    // })
 })
 
 module.exports = router; 

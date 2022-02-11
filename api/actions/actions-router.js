@@ -65,8 +65,8 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     
-    const { notes, description, completed, project_id } = req.body
-    if (!notes || !description || !completed || !project_id) {
+    const { notes, description, project_id } = req.body
+    if (!notes || !description || !project_id) {
         res.status(400).json({
             message: 'Missing required fields'
         })
