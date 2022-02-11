@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
                 message: 'Project ID not found'
             })
         } else {
-            res.json(project)
+            res.json(action)
         }
     })
 
