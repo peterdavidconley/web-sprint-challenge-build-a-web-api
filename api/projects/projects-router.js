@@ -48,21 +48,79 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 
-    Projects.insert(req.body)
-    .then(newProject => {
-        if (!req.body.name || !req.body.description) {
-            res.status(400).json({
-                message: 'Missing required fields'
+    const { name, description } = req.body
+    
+    if (!name || !description) {
+        res.status(400).json({
+            message: 'Missing required fields'
+        })
+    } else {
+        Projects.insert(req.body)
+        .then( ({ id }) => {
+            return Posts.findById(id) 
+        })
+        .then(post => {
+                res.status(201).json(post)
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'An error has occurred with this request.'
             })
-        } else {
-            res.json(newProject)
-        }
-    })
+        })
+    }
+
+    // .then(newProject => {
+    //     if (!name || !description) {
+    //         res.status(400).json({
+    //             message: 'Missing required fields'
+    //         })
+    //     } else {
+    //         res.json(newProject)
+    //     }
+    // })
+    // .catch(err => {
+    //     res.status(500).json({
+    //         message: 'An error has occurred with this request.'
+    //     })
+    
 })
 
 // `[PUT] /api/projects/:id` - Returns the updated project as the body of the response. - If there is no project with the given `id` it responds with a status code 404. - If the request body is missing any of the required fields it responds with a status code 400.
 
 router.put('/:id', (req, res) => {
+
+    const { name, description } = req.body
+    if (!name || !description) {
+        res.status(400).json({
+            message: 'Missing required fields'
+        })
+    } else {
+        Projects.get(req.body.params)
+        .then(project => {
+            if (!project) {
+                res.status(404).json({
+                    message: 'The post with the specified ID does not exist'
+                })
+            } else {
+                return Projects.update(req.params.id, req.body)
+            }
+        })
+        .then( project  => {
+            if (project) {
+                return Projects.get(req.params.id)
+            }
+        })
+        .then(project => {
+            if (project) {
+                res.json(project)
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'The project information could not be modified'
+            })
+        })
+    }
 
 })
 
@@ -84,8 +142,36 @@ router.delete('/:id', (req, res) => {
 
 // `[GET] /api/projects/:id/actions` - Returns an array of actions (could be empty) belonging to a project with the given `id`. - If there is no project with the given `id` it responds with a status code 404.
 
-router.get('/:id/actions', (req, res) => {
+router.get('/:id/actions', async (req, res) => {
 
+    try {
+        const project = await Projects.get(req.body.params)
+        if (!actions) {
+            res.status(404).json({
+                message: 'The project with the specified ID does not exist'
+            })
+        } else {
+            const actions = await Projects.getProjectActions(req.body.params)
+            res.status(201).json(actions)
+        }
+
+    } catch {
+        res.status(500).json({
+            message: 'There was an error with this req'
+        })
+    }
+
+
+    // Projects.getProjectActions(req.body.params)
+    // .then(actions => {
+    //     if(!actions){
+    //         res.status(404).json({
+    //             message: 'Could not locate project with that ID'
+    //         })
+    //     } else {
+    //         res.json(actions)
+    //     }
+    // })
 })
 
 module.exports = router; 
