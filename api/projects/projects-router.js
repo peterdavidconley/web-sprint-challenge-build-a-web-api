@@ -48,6 +48,16 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 
+    Projects.insert(req.body)
+    .then(newProject => {
+        if (!req.body.name || !req.body.description) {
+            res.status(400).json({
+                message: 'Missing required fields'
+            })
+        } else {
+            res.json(newProject)
+        }
+    })
 })
 
 // `[PUT] /api/projects/:id` - Returns the updated project as the body of the response. - If there is no project with the given `id` it responds with a status code 404. - If the request body is missing any of the required fields it responds with a status code 400.
