@@ -65,6 +65,39 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     
+    const { notes, description, completed, project_id } = req.body
+    if (!notes || !description || !completed || !project_id) {
+        res.status(400).json({
+            message: 'Missing required fields'
+        })
+    } else {
+        Actions.get(req.body.params)
+        .then(action => {
+            if (!action) {
+                res.status(404).json({
+                    message: 'The action with the specified ID does not exist'
+                })
+            } else {
+                return Actions.update(req.params.id, req.body)
+            }
+        })
+        .then(action  => {
+            if (action) {
+                return Actions.get(req.params.id)
+            }
+        })
+        .then(action => {
+            if (action) {
+                res.json(action)
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'The action information could not be modified'
+            })
+        })
+    }
+
 })
 
 // `[DELETE] /api/actions/:id` - Returns no response body. - If there is no action with the given `id` it responds with a status code 404.
