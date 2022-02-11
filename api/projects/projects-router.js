@@ -20,8 +20,8 @@ const Projects = require('./projects-model');
 router.get('/', (req, res) => {
 
     Projects.get()
-    .then(actions => {
-        res.status(201).json(actions)
+    .then(projects => {
+        res.json(projects)
     })
 
 })
