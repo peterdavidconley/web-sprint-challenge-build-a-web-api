@@ -5,7 +5,7 @@ const router = express.Router();
 
 const {
 
-
+    validateActionId,
 
 } = require('./actions-middleware')
 
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 
 // `[GET] /api/actions/:id - Returns an action with the given `id` as the body of the response. - If there is no action with the given `id` it responds with a status code 404.
 
-router.get('/:id', (req, res) => {
+router.get('/:id', validateActionId, (req, res, next) => {
 
     const {id} = req.params
     Actions.get(id) 

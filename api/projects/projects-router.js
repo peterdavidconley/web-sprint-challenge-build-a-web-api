@@ -4,8 +4,8 @@ const router = express.Router();
 // Import middleware
 
 const {
-
     
+    validateProjectId,
 
 } = require('./projects-middleware')
 
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 
 // `[GET] /api/projects/:id` - Returns a project with the given `id` as the body of the response. - If there is no project with the given `id` it responds with a status code 404.
 
-router.get('/:id', (req, res) => {
+router.get('/:id', validateProjectId, (req, res, next) => {
 
     const {id} = req.params
     Projects.get(id) 
