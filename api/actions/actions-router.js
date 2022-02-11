@@ -71,6 +71,16 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     
+    Actions.remove(req.params.id)
+    .then(action => {
+        if (!action) {
+            res.status(404).json({
+                message: 'Action with that ID could not be found'
+            })
+        } else {
+            res.json(action)
+        }
+    }) 
 })
 
 module.exports = router; 

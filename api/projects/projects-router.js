@@ -70,6 +70,16 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
 
+    Projects.remove(req.params.id)
+    .then(project => {
+        if (!project) {
+            res.status(404).json({
+                message: 'Project with that ID could not be found'
+            })
+        } else {
+            res.json(project)
+        }
+    }) 
 })
 
 // `[GET] /api/projects/:id/actions` - Returns an array of actions (could be empty) belonging to a project with the given `id`. - If there is no project with the given `id` it responds with a status code 404.
