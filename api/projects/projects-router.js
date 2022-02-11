@@ -4,8 +4,9 @@ const router = express.Router();
 // Import middleware
 
 const {
-    
+
     validateProjectId,
+    validatePost,
 
 } = require('./projects-middleware')
 
