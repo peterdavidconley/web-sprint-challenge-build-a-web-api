@@ -5,22 +5,20 @@ const server = express();
 
 server.use(express.json());
 
-// Build your actions router in /api/actions/actions-router.js
+// Middleware #1
 
 server.use('/api/users', (req, res) => {
 
 })
 
-// Build your projects router in /api/projects/projects-router.js
+// Middleware #2
 
 server.use('/api/users', (req, res) => {
 
 })
-
-// Do NOT `server.listen()` inside this file!
 
 server.get('/', (req, res) => {
-    res.send(`<h2>Let's write some middleware!</h2>`);
+    res.send(`<h2>Testing root access works.</h2>`);
   });
 
 module.exports = server;

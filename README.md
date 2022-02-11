@@ -37,7 +37,7 @@ A _"resetdb"_ script exists that allows you to reset the database to its origina
 
 #### Environment Variables
 
-- [ ] Bring the port number from the `process.env` variable, falling back to `9000` if `process.env.PORT` is undefined **!!!**
+- [x] Bring the port number from the `process.env` variable, falling back to `9000` if `process.env.PORT` is undefined **!!!**
 
 #### Endpoints
 
@@ -138,8 +138,8 @@ We have provided test data for all the resources.
 ## Submission format
 
 - [x] Submit via Codegrade by pushing commits to your `main` branch.
-- [ ] Check Codegrade before the deadline to compare its results against your local tests.
-- [ ] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
+- [x] Check Codegrade before the deadline to compare its results against your local tests.
+- [x] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
 - [x] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
 
 ## Interview Questions
@@ -147,6 +147,9 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+
+Node.js and Express allows you to use JavaScript without a browser. They also give you the functionality to create a working server to create API's without other languages like Python. 
+
 1. Understand and explain the use of Middleware.
 1. The basic principles of the REST architectural style.
 1. Understand and explain the use of Express Routers.
