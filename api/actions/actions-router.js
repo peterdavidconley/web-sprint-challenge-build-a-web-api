@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 
     Actions.insert(req.body)
     .then(newAction => {
-        if (!req.body.project_id || !req.body.description || !req.body.notes || !req.body.completed) {
+        if (!req.body.project_id || !req.body.description || !req.body.notes) {
             res.status(400).json({
                 message: 'Missing required fields'
             })
