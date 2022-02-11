@@ -30,6 +30,18 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 
+    const {id} = req.params
+    Projects.get(id) 
+    .then(project => {
+        if (!project) {
+            res.status(404).json({
+                message: 'Project ID not found'
+            })
+        } else {
+            res.json(project)
+        }
+    })
+
 })
 
 // `[POST] /api/projects` - Returns the newly created project as the body of the response. - If the request body is missing any of the required fields it responds with a status code 400.
